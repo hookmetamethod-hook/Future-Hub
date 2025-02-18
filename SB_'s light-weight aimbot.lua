@@ -4,7 +4,7 @@ _G.SB_Status_aimbot = "loading"
 
 --// Services
 if not _G.Library then
-	_G.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/FutureLib/refs/heads/main/main.lua"))()
+	_G.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Script/FutureLib/refs/heads/main/main.lua"))()
 	if not _G.UI_Library then _G.UI_Library = _G.Library.UI.Fluent end
 end
 repeat task.wait(0.1) until _G.UI_Library ~= nil
