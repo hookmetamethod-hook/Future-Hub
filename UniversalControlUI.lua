@@ -6,4 +6,4 @@ if not _G.Library then _G.Library = loadstring(game:HttpGet("https://raw.githubu
 repeat task.wait(0.1) until _G.UI_Library ~= nil
 local function Notify(Message, SubMessage) if _G.UI_Library and typeof(Message) == "string" and typeof(SubMessage) == "string" then _G.UI_Library:Notify({Title = "Notification", Content = Message, SubContent = SubMessage, Duration = 6, Theme = _G.UI_Library.Themes.Amethyst}) end end
 
-Notify("The control UI is WIP", "SB_'s light-weight aimbot")
+Notify("The control UI is WIP", "Future Hub | Control UI")
