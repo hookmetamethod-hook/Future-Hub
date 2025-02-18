@@ -42,7 +42,7 @@ end
 --// Config
 _G.AimbotEnabled = savedsettings.AimbotEnabled-- if i have to explain this you're braindead
 
-local InGameControllerEnabled = savedsettings.InGameControllerEnabled
+local InGameControllerEnabled = true
 -- That ^ controls whether the in-game control ui is enabled
 --[[this isnt coded yet btw, the description is just there cuz why not]]--
 
@@ -69,7 +69,7 @@ FOVCircle.Visible = _G.FOVVisible
 
 --\\ Functions
 if InGameControllerEnabled == true then
-	local ui = nil
+	local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/SB_Scripts/refs/heads/main/UniversalControlUI.lua"))()
 end
 
 _G.Friends = {} -- init Friends
