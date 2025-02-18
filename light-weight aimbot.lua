@@ -1,6 +1,6 @@
-if _G.SB_Status_aimbot == "loading" or _G.SB_Status_aimbot == "loaded" then error("Future Hub | light-weight aimbot | Already loading/loaded.", 3) end
+if _G.FH_Status_aimbot == "loading" or _G.FH_Status_aimbot == "loaded" then error("Future Hub | light-weight aimbot | Already loading/loaded.", 3) end
 -- one line anti-multi-instance go brrrrrr
-_G.SB_Status_aimbot = "loading"
+_G.FH_Status_aimbot = "loading"
 
 --// Services
 if not _G.Library then
@@ -17,23 +17,23 @@ local LocalPlayer = Players.LocalPlayer
 local function Notify(Message, SubMessage) if _G.UI_Library and typeof(Message) == "string" and typeof(SubMessage) == "string" then _G.UI_Library:Notify({Title = "Notification", Content = Message, SubContent = SubMessage, Duration = 6}) end end
 --// Requirement checks
 if getfenv().readfile and getfenv().writefile and getfenv().isfile then --[[nothing]] else Notify("An error occured when checking read/write functions, read dev console for more info.", ""); _G.SB_Status_cframesliding = nil; error("Future Hub | light-weight aimbot | Your exploit does not have readfile, writefile or isfile, those are required to use this script.", 2) end
---// SB_Scripts env check
-if not getfenv().isfile("SB_Scripts") then getfenv().makefolder("SB_Scripts") end
+--// FutureHub env check
+if not getfenv().isfile("FutureHub") then getfenv().makefolder("FutureHub") end
 task.wait()
 --// Loading settings
 local savedsettings;
 local savedebug = true
 do
-	if getfenv().isfile("SB_Scripts/SB_Aimbot_Settings.json") then
+	if getfenv().isfile("FutureHub/FH_Aimbot_Settings.json") then
 		local success, result = pcall(function()
-    		return game:GetService("HttpService"):JSONDecode(getfenv().readfile("SB_Scripts/SB_Aimbot_Settings.json"))
+    		return game:GetService("HttpService"):JSONDecode(getfenv().readfile("FutureHub/FH_Aimbot_Settings.json"))
 		end)
 		if success and type(result) == "table" then
     		savedsettings = result
 			Notify("Loaded saved settings.", "Future Hub | light-weight aimbot")
 		else
     		savedsettings = {AimbotEnabled = true, InGameControllerEnabled = false, FOVEnabled = true, TeamCheck = false, FOVVisible = true, FOVThickness = 1, FOVColor = Color3.fromRGB(255, 255, 255), RandomAimPart = false, AimPart = "Head", CircleRadius = 180, WallCheck = true}
-			Notify("There was an error while loading your settings from SB_Aimbot_Settings.json, default settings were applied.", "Future Hub | light-weight aimbot")
+			Notify("There was an error while loading your settings from FH_Aimbot_Settings.json, default settings were applied.", "Future Hub | light-weight aimbot")
 		end
 	else
 		savedsettings = {AimbotEnabled = true, InGameControllerEnabled = false, FOVEnabled = true, TeamCheck = false, FOVVisible = true, FOVThickness = 1, FOVColor = Color3.fromRGB(255, 255, 255), RandomAimPart = false, AimPart = "Head", CircleRadius = 180, WallCheck = true}
@@ -66,7 +66,7 @@ FOVCircle.Radius = _G.CircleRadius
 FOVCircle.Visible = _G.FOVVisible
 
 --\\ Functions
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/SB_Scripts/refs/heads/main/UniversalControlUI.lua"))()
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Scripts/Future-Hub/refs/heads/main/UniversalControlUI.lua"))()
 
 _G.Friends = {} -- init Friends
 
@@ -131,7 +131,7 @@ local function ToggleFriend(target)
 end
 
 --// User input handling
-_G.sbaimbotuserinput1 = UserInputService.InputBegan:Connect(function(Input)
+_G.FHaimbotuserinput1 = UserInputService.InputBegan:Connect(function(Input)
     if Input.UserInputType == Enum.UserInputType.MouseButton3 then
         local MousePos = UserInputService:GetMouseLocation()
         local Origin = Camera.CFrame.Position
@@ -156,19 +156,19 @@ _G.sbaimbotuserinput1 = UserInputService.InputBegan:Connect(function(Input)
 end)
 
 local Holding = false
-_G.sbaimbotuserinput2 = UserInputService.InputBegan:Connect(function(Input)
+_G.FHaimbotuserinput2 = UserInputService.InputBegan:Connect(function(Input)
     if Input.UserInputType == Enum.UserInputType.MouseButton2 then
         Holding = true
     end
 end)
 
-_G.sbaimbotuserinput3 = UserInputService.InputEnded:Connect(function(Input)
+_G.FHaimbotuserinput3 = UserInputService.InputEnded:Connect(function(Input)
     if Input.UserInputType == Enum.UserInputType.MouseButton2 then
         Holding = false
     end
 end)
 
-_G.sbaimbotrunservice2 = RunService.RenderStepped:Connect(function()
+_G.FHaimbotrunservice2 = RunService.RenderStepped:Connect(function()
     local MousePos = UserInputService:GetMouseLocation()
     FOVCircle.Position = MousePos
     FOVCircle.Radius = _G.CircleRadius
@@ -185,7 +185,7 @@ end)
 task.spawn(function()
     while task.wait(10) do
         local success, err = pcall(function()
-            getfenv().writefile("SB_Scripts/SB_Aimbot_Settings.json", game:GetService("HttpService"):JSONEncode({
+            getfenv().writefile("FutureHub/FH_Aimbot_Settings.json", game:GetService("HttpService"):JSONEncode({
                 AimbotEnabled = true,
                 InGameControllerEnabled = false,
                 FOVEnabled = true,
@@ -205,4 +205,4 @@ task.spawn(function()
 end)
 
 Notify("Loaded!", "Future Hub | light-weight aimbot")
-_G.SB_Status_aimbot = "loaded"
+_G.FH_Status_aimbot = "loaded"
