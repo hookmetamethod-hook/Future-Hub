@@ -66,7 +66,7 @@ FOVCircle.Radius = _G.CircleRadius
 FOVCircle.Visible = _G.FOVVisible
 
 --\\ Functions
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Scripts/Future-Hub/refs/heads/main/UniversalControlUI.lua"))()
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Script/Future-Hub/refs/heads/main/UniversalControlUI.lua"))()
 
 _G.Friends = {} -- init Friends
 
