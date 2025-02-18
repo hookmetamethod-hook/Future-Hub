@@ -1,4 +1,4 @@
-if _G.SB_Status_aimbot == "loading" or _G.SB_Status_aimbot == "loaded" then error("SB_Scripts | light-weight aimbot | Already loading/loaded.", 3) end
+if _G.SB_Status_aimbot == "loading" or _G.SB_Status_aimbot == "loaded" then error("Future Hub | light-weight aimbot | Already loading/loaded.", 3) end
 -- one line anti-multi-instance go brrrrrr
 _G.SB_Status_aimbot = "loading"
 
@@ -16,7 +16,7 @@ local LocalPlayer = Players.LocalPlayer
 --// Notify function
 local function Notify(Message, SubMessage) if _G.UI_Library and typeof(Message) == "string" and typeof(SubMessage) == "string" then _G.UI_Library:Notify({Title = "Notification", Content = Message, SubContent = SubMessage, Duration = 6}) end end
 --// Requirement checks
-if getfenv().readfile and getfenv().writefile and getfenv().isfile then --[[nothing]] else Notify("An error occured when checking read/write functions, read dev console for more info.", ""); _G.SB_Status_cframesliding = nil; error("SB_Scripts | light-weight aimbot | Your exploit does not have readfile, writefile or isfile, those are required to use this script.", 2) end
+if getfenv().readfile and getfenv().writefile and getfenv().isfile then --[[nothing]] else Notify("An error occured when checking read/write functions, read dev console for more info.", ""); _G.SB_Status_cframesliding = nil; error("Future Hub | light-weight aimbot | Your exploit does not have readfile, writefile or isfile, those are required to use this script.", 2) end
 --// SB_Scripts env check
 if not getfenv().isfile("SB_Scripts") then getfenv().makefolder("SB_Scripts") end
 task.wait()
@@ -30,14 +30,14 @@ do
 		end)
 		if success and type(result) == "table" then
     		savedsettings = result
-			Notify("Loaded saved settings.", "SB_'s light-weight aimbot")
+			Notify("Loaded saved settings.", "Future Hub | light-weight aimbot")
 		else
     		savedsettings = {AimbotEnabled = true, InGameControllerEnabled = false, FOVEnabled = true, TeamCheck = false, FOVVisible = true, FOVThickness = 1, FOVColor = Color3.fromRGB(255, 255, 255), RandomAimPart = false, AimPart = "Head", CircleRadius = 180, WallCheck = true}
-			Notify("There was an error while loading your settings from SB_Aimbot_Settings.json, default settings were applied.", "SB_'s light-weight aimbot")
+			Notify("There was an error while loading your settings from SB_Aimbot_Settings.json, default settings were applied.", "Future Hub | light-weight aimbot")
 		end
 	else
 		savedsettings = {AimbotEnabled = true, InGameControllerEnabled = false, FOVEnabled = true, TeamCheck = false, FOVVisible = true, FOVThickness = 1, FOVColor = Color3.fromRGB(255, 255, 255), RandomAimPart = false, AimPart = "Head", CircleRadius = 180, WallCheck = true}
-		Notify("You had no saved settings, default settings were applied.", "SB_'s light-weight aimbot")
+		Notify("You had no saved settings, default settings were applied.", "Future Hub | light-weight aimbot")
 	end
 end
 
@@ -123,10 +123,10 @@ local function ToggleFriend(target)
     local found = table.find(_G.Friends, target.Name)
     if found then
         table.remove(_G.Friends, found)
-        Notify("Removed "..target.Name.." from friends", "SB_'s light-weight aimbot")
+        Notify("Removed "..target.Name.." from friends", "Future Hub | light-weight aimbot")
     else
         table.insert(_G.Friends, target.Name)
-        Notify("Added "..target.Name.." as a friend", "SB_'s light-weight aimbot")
+        Notify("Added "..target.Name.." as a friend", "Future Hub | light-weight aimbot")
     end
 end
 
@@ -199,10 +199,10 @@ task.spawn(function()
             }))
         end)
         if savedebug then
-            print("SB_Scripts | light-weight aimbot | Autosave Success: ", success, " | Error: ", err) 
+            print("Future Hub | light-weight aimbot | Autosave Success: ", success, " | Error: ", err) 
         end
     end
 end)
 
-Notify("Loaded!", "SB_'s light-weight aimbot")
+Notify("Loaded!", "Future Hub | light-weight aimbot")
 _G.SB_Status_aimbot = "loaded"
