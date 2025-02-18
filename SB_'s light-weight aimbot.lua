@@ -3,8 +3,10 @@ if _G.SB_Status_aimbot == "loading" or _G.SB_Status_aimbot == "loaded" then erro
 _G.SB_Status_aimbot = "loading"
 
 --// Services
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/FutureLib/refs/heads/main/main.lua"))()
-local UI_Library = Library.UI.Fluent
+if not _G.Library then
+	_G.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/FutureLib/refs/heads/main/main.lua"))()
+	if not _G.UI_Library then _G.UI_Library = Library.UI.Fluent end
+end
 repeat task.wait(0.1) until UI_Library ~= nil
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
@@ -40,20 +42,16 @@ do
 end
 
 --// Config
-_G.AimbotEnabled = savedsettings.AimbotEnabled-- if i have to explain this you're braindead
+_G.AimbotEnabled = savedsettings.AimbotEnabled -- if i have to explain this you're braindead
 
-local InGameControllerEnabled = true
--- That ^ controls whether the in-game control ui is enabled
---[[this isnt coded yet btw, the description is just there cuz why not]]--
-
-_G.FOVEnabled    = savedsettings.FOVEnabled   -- Whether or not FOV is enabled
-_G.TeamCheck     = savedsettings.TeamCheck    -- If true, only locks onto enemies
-_G.FOVVisible    = savedsettings.FOVVisible   -- Whether or not FOV circle is visible
-_G.FOVThickness  = savedsettings.FOVThickness -- Thickness of the FOV circle
-_G.RandomAimPart = savedsettings.RandomAimPart-- Randomly chooses aimbot (Head or Torso)
-_G.AimPart       = savedsettings.AimPart      -- Again, if i gotta explain this ur brain is non-existant
-_G.CircleRadius  = savedsettings.CircleRadius -- FOV circle radius (put 99999 if u want entire screen)
-_G.WallCheck     = savedsettings.WallCheck    -- Stops aiming if target is behind a wall
+_G.FOVEnabled    = savedsettings.FOVEnabled    -- Whether or not FOV is enabled
+_G.TeamCheck     = savedsettings.TeamCheck     -- If true, only locks onto enemies
+_G.FOVVisible    = savedsettings.FOVVisible    -- Whether or not FOV circle is visible
+_G.FOVThickness  = savedsettings.FOVThickness  -- Thickness of the FOV circle
+_G.RandomAimPart = savedsettings.RandomAimPart -- Randomly chooses aimbot (Head or Torso)
+_G.AimPart       = savedsettings.AimPart       -- Again, if i gotta explain this ur brain is non-existant
+_G.CircleRadius  = savedsettings.CircleRadius  -- FOV circle radius (put 99999 if u want entire screen)
+_G.WallCheck     = savedsettings.WallCheck     -- Stops aiming if target is behind a wall
 
 --[[-------------------------------------------------------------------------
                    Do not modify anything below this line.                   
@@ -68,9 +66,7 @@ FOVCircle.Radius = _G.CircleRadius
 FOVCircle.Visible = _G.FOVVisible
 
 --\\ Functions
-if InGameControllerEnabled == true then
-	local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/SB_Scripts/refs/heads/main/UniversalControlUI.lua"))()
-end
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3P3x/SB_Scripts/refs/heads/main/UniversalControlUI.lua"))()
 
 _G.Friends = {} -- init Friends
 
