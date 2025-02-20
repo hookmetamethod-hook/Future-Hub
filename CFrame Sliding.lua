@@ -13,8 +13,8 @@ local Char = Player.Character or Player.CharacterAdded:Wait()
 local UserInputService = game:GetService("UserInputService")
 
 local function Notify(Message, SubMessage)
-    if UI_Library and typeof(Message) == "string" and typeof(SubMessage) == "string" then
-    	UI_Library:Notify({Title = "Notification", Content = Message, SubContent = SubMessage, Duration = 6 })
+	if UI_Library and typeof(Message) == "string" and typeof(SubMessage) == "string" then
+		UI_Library:Notify({Title = "Notification", Content = Message, SubContent = SubMessage, Duration = 6 })
 	end
 end
 
@@ -31,7 +31,7 @@ task.wait()
 local savedsettings;
 local savedebug = false
 do
-	if getfenv().isfile("SB_Scripts/savedsettings.json") then
+	if getfenv().isfile("FutureHub/FH_AdonisSpeedBypass_Settings.json") then
 		local success, result = pcall(function()
     		return game:GetService("HttpService"):JSONDecode(getfenv().readfile("FutureHub/FH_AdonisSpeedBypass_Settings.json"))
 		end)
@@ -79,5 +79,4 @@ task.spawn(function()
         end
     end
 end)
-_G.FH_Status_AdonisSpeedBypass = "loaded"
 Notify("Loaded!", "Future Hub | Adonis speed bypass")
