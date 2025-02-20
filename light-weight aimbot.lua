@@ -241,4 +241,4 @@ _G.FH_Status_aimbot = "loaded"
 if _G.FHdebug then print("set status: loaded") end
 Notify("Loaded!", "Future Hub | light-weight aimbot")
 if _G.FHdebug then print("finished loading script") end
-if -G.FHdebug then print("-=-=-=-=-=-=-=-=-=-=-=-") end
+if _G.FHdebug then print("-=-=-=-=-=-=-=-=-=-=-=-") end
