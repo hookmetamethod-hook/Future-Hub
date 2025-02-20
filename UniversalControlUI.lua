@@ -1,6 +1,7 @@
 --[[
     The control UI is WIP
 ]]
+
 if _G.FHdebug then print("-=- FHdebug enabled -=-") end
 if not _G.Library then if _G.FHdebug then print("no library") end; _G.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Script/FutureLib/refs/heads/main/main.lua"))(); if _G.FHdebug then print("loaded library") end; if not _G.UI_Library then if _G.FHdebug then print("no ui library") end; _G.UI_Library = _G.Library.UI.Fluent; if _G.FHdebug then print("loaded ui library") end end end
 repeat task.wait(0.1) until _G.UI_Library ~= nil
