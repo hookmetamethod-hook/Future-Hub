@@ -9,4 +9,4 @@ if _G.FHdebug then print("set up Notify function") end
 
 Notify("The control UI is WIP", "Future Hub | Control UI")
 if _G.FHdebug then print("finished loading script") end
-if -G.FHdebug then print("-=-=-=-=-=-=-=-=-=-=-=-") end
+if _G.FHdebug then print("-=-=-=-=-=-=-=-=-=-=-=-") end
