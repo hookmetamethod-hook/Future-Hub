@@ -1,7 +1,5 @@
-if _G.SB_Status_AdonisSpeedBypass == "loading" or _G.SB_Status_AdonisSpeedBypass == "loaded" then error("Future Hub | Adonis speed bypass | Already loading/loaded.", 3) end
--- one line anti-multi-instance go brrrrrr
-_G.SB_Status_AdonisSpeedBypass = "loading"
-
+if _G.FH_Status_AdonisSpeedBypass == "loading" or _G.FH_Status_AdonisSpeedBypass == "loaded" then error("Future Hub | Adonis speed bypass | Already loading/loaded.", 3) end -- one line anti-multi-instance go brrrrrr
+_G.FH_Status_AdonisSpeedBypass = "loading"
 
 if not _G.Library then
 	_G.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Script/FutureLib/refs/heads/main/main.lua"))()
@@ -53,7 +51,7 @@ end
 _G.SpeedEnabled = savedsettings.SpeedEnabled
 _G.SpeedMultiplier = savedsettings.SpeedMultiplier
 
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Scripts/Future-Hub/refs/heads/main/UniversalControlUI.lua"))()
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Script/Future-Hub/refs/heads/main/UniversalControlUI.lua"))()
 
 RunService.RenderStepped:Connect(function()
 	if _G.SpeedEnabled == true and Char ~= nil then
