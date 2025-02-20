@@ -1,4 +1,4 @@
-if -G.FHdebug then print("-=- FHdebug enabled -=-") end
+if _G.FHdebug then print("-=- FHdebug enabled -=-") end
 if _G.FH_Status_AdonisSpeedBypass == "loading" or _G.FH_Status_AdonisSpeedBypass == "loaded" then error("Future Hub | Adonis speed bypass | Already loading/loaded.", 3) end -- one line anti-multi-instance go brrrrrr
 _G.FH_Status_AdonisSpeedBypass = "loading"
 if _G.FHdebug then print("set status: loading") end
