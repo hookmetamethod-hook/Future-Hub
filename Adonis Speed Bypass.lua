@@ -3,7 +3,7 @@ if _G.FH_Status_ASB == "loading" or _G.FH_Status_ASB == "loaded" then error("Fut
 _G.FH_Status_ASB = "loading"
 
 if not _G.Library then error("Future Hub | Library failed to initialize") end
-local function Log(Text, Typee) _G.Library.Logger:Prompt({Title = Text, TypesWeHave = {"default", "success", "fail", "warning", "nofitication"}, Type = Typee}) end
+local function Log(Text, Typee) _G.Library.Logger:Prompt({Title = Text, TypesWeHave = {"default", "success", "fail", "warning", "notification"}, Type = Typee}) end
 
 local Notifs = _G.Library.Notifications
 
