@@ -3,13 +3,8 @@ if _G.FH_Status_AdonisSpeedBypass == "loading" or _G.FH_Status_AdonisSpeedBypass
 _G.FH_Status_AdonisSpeedBypass = "loading"
 if _G.FHdebug then print("set status: loading") end
 
-if not _G.Library then
-	if _G.FHdebug then print("no library") end
-	_G.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SB-Script/FutureLib/refs/heads/main/main.lua"))()
-	if _G.FHdebug then print("loaded library") end
-	if not _G.UI_Library then if _G.FHdebug then print("no ui library") end; _G.UI_Library = _G.Library.UI.Fluent; if _G.FHdebug then print("loaded ui library") end end
-end
-repeat task.wait(0.1) until _G.UI_Library ~= nil
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/UILoader.lua"))()
+repeat task.wait(0.1) until _G.Library ~= nil and _G.Library.Main ~= nil and _G.Library.Notifications ~= nil and _G.Library.Logger ~= nil
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -17,9 +12,9 @@ local Char = Player.Character or Player.CharacterAdded:Wait()
 local UserInputService = game:GetService("UserInputService")
 if _G.FHdebug then print("definded services") end
 
-local function Notify(Message, SubMessage)
-	if UI_Library and typeof(Message) == "string" and typeof(SubMessage) == "string" then
-		UI_Library:Notify({Title = "Notification", Content = Message, SubContent = SubMessage, Duration = 6 })
+local function Notify(Type, Message, SubMessage)
+	if _G.Library.Notifications and typeof(Type) == "string" and typeof(Message) == "string" and typeof(SubMessage) == "string" then
+		Notification.new(Type, Message, SubMessage, true, 8, nil)
 	end
 end
 if _G.FHdebug then print("set up Notify function") end
