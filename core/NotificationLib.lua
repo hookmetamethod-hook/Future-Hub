@@ -1,5 +1,5 @@
 _G.FutureHooks = _G.FutureHooks or {}
-if not _G.FutureHooks.GuiDetectionBypass.Notification then
+if not _G.FutureHooks.GuiDetectionBypass then
     local CoreGui = game.CoreGui
     local ContentProvider = game.ContentProvider
     local RobloxGuis = {"RobloxGui", "TeleportGui", "RobloxPromptGui", "RobloxLoadingGui", "PlayerList", "RobloxNetworkPauseNotification", "PurchasePrompt", "HeadsetDisconnectedDialog", "ThemeProvider", "DevConsoleMaster"}
@@ -99,7 +99,7 @@ if not _G.FutureHooks.GuiDetectionBypass.Notification then
         return old(self, ...)
     end)
     
-    _G.FutureHooks.GuiDetectionBypass.Notification = true
+    _G.FutureHooks.GuiDetectionBypass = true
 end
 
 local Notification = {}
