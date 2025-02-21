@@ -5,8 +5,6 @@ if not _G.FutureHooks.GuiDetectionBypass then
     local RobloxGuis = {"RobloxGui", "TeleportGui", "RobloxPromptGui", "RobloxLoadingGui", "PlayerList", "RobloxNetworkPauseNotification", "PurchasePrompt", "HeadsetDisconnectedDialog", "ThemeProvider", "DevConsoleMaster"}
     
     local function FilterTable(tbl)
-        local context = syn_context_get()
-        syn_context_set(7)
         local new = {}
         for i,v in ipairs(tbl) do
             if typeof(v) ~= "Instance" then
@@ -44,7 +42,6 @@ if not _G.FutureHooks.GuiDetectionBypass then
                 end
             end
         end
-        syn_context_set(context)
         return new
     end
     
