@@ -1,7 +1,3 @@
---[[
-  UI lib made by Future Hub
-]]
-
 -- / Locals
 local Workspace = game:GetService("Workspace")
 local Player = game:GetService("Players").LocalPlayer
