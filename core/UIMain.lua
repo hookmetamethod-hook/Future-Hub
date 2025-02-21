@@ -1864,18 +1864,6 @@ function library:Init(key)
                 end
             end)
 
-            local ChatTextBox = Player.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
-            if UserInputService.WindowFocused then
-                UserInputService.InputBegan:Connect(function(c, p)
-                    if not p then
-                        if c.KeyCode.Name == ChosenKey and not ChatTextBox:IsFocused() then
-                            callback(ChosenKey)
-                            return
-                        end
-                    end
-                end)
-            end
-
             UpdatePageSize()
 
             local KeybindFunctions = {}
