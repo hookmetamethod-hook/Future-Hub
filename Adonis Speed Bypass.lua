@@ -16,7 +16,7 @@ if _G.FHdebug then Log("ASB | Checking fenv functions", "default") end
 if getfenv().writefile and getfenv().readfile and getfenv().isfile and getfenv().makefolder then
 	--[[- n o t h i n g -]]--
 else
-	Log("ASB | Fatal error: your exploit does not support writefile, readfile, or isfile, these functions are required to use this script.", "fail")
+	Log("ASB | Fatal error: your exploit does not support writefile, readfile, isfile or makefolder, these functions are required to use this script.", "fail")
 	task.wait()
 	error("Future Hub | Adonis Speed Bypass | Fatal error: your exploit does not support writefile, readfile, isfile or makefolder, these functions are required to use this script.", 3)
 end
@@ -31,17 +31,17 @@ if _G.FHdebug then Log("ASB | Checking/Loading saved settings", "default") end
 local savedsettings;
 if getfenv().isfile("FutureHub/FH_AdonisSpeedBypass_Settings.json") then
 	local success, result = pcall(function()
-        return game:GetService("HttpService"):JSONDecode(getfenv().readfile("FutureHub/FH_AdonisSpeedBypass_Settings.json"))
-    end)
+		return game:GetService("HttpService"):JSONDecode(getfenv().readfile("FutureHub/FH_AdonisSpeedBypass_Settings.json"))
+	end)
     if success and type(result) == "table" then
 		if _G.FHdebug then Log("ASB | Loaded saved settings", "success") end
-        savedsettings = result
-        Notify("success", "Loaded saved settings", 8)
-    else
-        if _G.FHdebug then Log("ASB | and error occured while loading saved settings, applying default", "fail") end
+    	savedsettings = result
+    	Notify("success", "Loaded saved settings", 8)
+	else
+		if _G.FHdebug then Log("ASB | an error occurred while loading saved settings, applying default", "fail") end
 		savedsettings = {SpeedEnabled = true, SpeedMultiplier = 1}
-		Notify("error", "An error occured while loading saved settings", 8)
-    end
+		Notify("error", "An error occurred while loading saved settings", 8)
+	end
 else
 	if _G.FHdebug then Log("ASB | No saved settings found, applying default", "warning") end
 	savedsettings = {SpeedEnabled = true, SpeedMultiplier = 1}
