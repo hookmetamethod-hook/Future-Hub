@@ -4,11 +4,7 @@ local Notification = {}
 Notification.__index = Notification
 
 local ts = game:GetService("TweenService")
-local ss = game:GetService("SoundService")
 local txtS = game:GetService("TextService")
-
-local openSound = Instance.new("Sound")
-local closeSound = Instance.new("Sound")
 
 local notifications = Instance.new("ScreenGui")
 local notifsHolderFrame = Instance.new("Frame")
@@ -75,16 +71,6 @@ local warningCloseButton = Instance.new("ImageButton")
 
 local previousUiExists = game:GetService("CoreGui"):FindFirstChild("notifications")
 if previousUiExists then previousUiExists:Destroy() end
-
-openSound.Name = "OpenNotifSound"
-openSound.Volume = 1
-openSound.SoundId = "rbxassetid://9128519965"
-openSound.Parent = ss
-
-closeSound.Name = "CloseNotifSound"
-closeSound.Volume = 1
-closeSound.SoundId = "rbxassetid://9128519965"
-closeSound.Parent = ss
 
 notifications.Name = "notifications"
 notifications.Parent = game:GetService("CoreGui")
@@ -649,7 +635,6 @@ function Notification.new(notifType: string, heading: string, body: string, auto
             ts:Create(notif.templateFrame, TweenInfo.new(.25), {Position = UDim2.new(0,0,0,0)}):Play()
         end
 
-        openSound:Play()
         playOpenNotifTween()
     end
 
@@ -661,7 +646,6 @@ function Notification.new(notifType: string, heading: string, body: string, auto
                 closeTween.Completed:Wait()
             end
             
-            closeSound:Play()
             if callback then callback() end
             playCloseNotifTween()
             notif:Destroy()
