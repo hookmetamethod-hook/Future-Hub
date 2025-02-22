@@ -6,6 +6,7 @@ end
 
 local Wm = _G.Library:Watermark("Future Hub | V1.1 | Rank: ".. _G.Library.rank)
 
+local notifs = _G.Library.Notifications
 local Notif = {}
 Notif.Notify = function(typee, text, duration)
     notifs.new(typee, "Notification", text, true, duration)
