@@ -854,7 +854,7 @@ local function OnPresetFlingEnabled() -- SIGNAL: RunService.PostSimulation [Requ
 	local Target = Mouse.Target
 	local TargetParent = Target and Target.Parent
 	local TargetDescendant = TargetParent and TargetParent.Parent
-	local NewTarget = FindFirstChildOfClass(TargetParent, "Humanoid") or FindFirstChildOfClass(TargetDescendant, "Humanoid")
+	local NewTarget = TargetParent:FindFirstChildOfClass("Humanoid") or TargetParent:FindFirstChildOfClass("Humanoid")
 
 	local HitCalciulation = CFrame.new(Mouse.Hit.Position)
 
