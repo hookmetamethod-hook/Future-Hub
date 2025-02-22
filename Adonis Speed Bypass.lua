@@ -1,5 +1,5 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
-if _G.FH_Status_ASB == "loading" or _G.FH_Status_ASB == "loaded" then error("Future Hub | Adonis Speed Bypass", 3) end
+if _G.FH_Status_ASB == "loading" or _G.FH_Status_ASB == "loaded" then error("Future Hub | Adonis Speed Bypass | Already loading / loaded", 3) end
 _G.FH_Status_ASB = "loading"
 
 if not _G.Library then error("Future Hub | Library failed to initialize") end
