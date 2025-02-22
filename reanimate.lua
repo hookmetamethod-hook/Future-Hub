@@ -773,8 +773,8 @@ local function ArePlayersNearby() -- : Boolean
 	for _, Part in Workspace:GetPartBoundsInRadius(TeleportOffset, 10) do
 		local Model = Part.Parent
 
-		if IsA(Model, "Model") then
-			if FindFirstChildOfClass(Model, "Humanoid") then
+		if Model:IsA("Model") then
+			if Model:FindFirstChildOfClass("Humanoid") then
 				if not (Model == Character and Model == FakeRig) then
 					Output = true
 				end
