@@ -34,11 +34,17 @@ local Section1 = Tab1:NewSection("Inject hax ")
 
 
 
+
 local haxTab1 = Init:NewTab("hax tab 1")
 local haxSect1 = haxTab1:NewSection("epik hax yes yes")
 
+local haxTab2 = Init:NewTab("hax tab 2")
+local haxSect2 = haxTab2:NewSection("even more epik hax yes yes")
+
+
 
 haxTab1:Hide()
+haxTab2:Hide()
 
 local buttons = { Button = {} }
 
