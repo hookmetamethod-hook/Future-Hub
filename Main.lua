@@ -1,11 +1,10 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/UIMain.lua"))()
-local notifs = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/UILoader.lua"))()
 
-if library:GetUsername() == "reshapedd" or "hookmetamethod_hook" then
-    library.rank = "Developer"
+if _G.Library:GetUsername() == "reshapedd" or "hookmetamethod_hook" then
+    _G.Library.rank = "Developer"
 end
 
-local Wm = library:Watermark("Future Hub | V1.1 | Rank: ".. library.rank)
+local Wm = _G.Library:Watermark("Future Hub | V1.1 | Rank: ".. _G.Library.rank)
 
 local Notif = {}
 Notif.Notify = function(typee, text, duration)
@@ -15,11 +14,11 @@ end
 task.wait(0.05)
 local LoadingXSX = Notif.Notify("info", "Loading Future Hub, please be patient.", 3)
 
-library.title = "Future Hub"
+_G.Library.title = "Future Hub"
 
-library:Introduction()
+_G.Library:Introduction()
 wait(1)
-local Init = library:Init()
+local Init = _G.Library:Init()
 
 
 local newTab = {}
