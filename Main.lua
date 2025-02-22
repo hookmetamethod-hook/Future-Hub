@@ -49,7 +49,7 @@ buttons.Button[1] = Tab1:NewButton("inject numbuh 1 hax", function()
 end)
 
 buttons.Button[2] = Tab1:NewButton("inject numbuh 2 hax", function()
-    haxTab1:Show()
+    haxTab2:Show()
     wait(0.1)
     buttons.Button[2]:Remove()
 end)
