@@ -1,8 +1,11 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/UIMain.lua"))()
 local notifs = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
+if library:GetUsername() == "reshapedd" or "hookmetamethod_hook" then
+    library.rank = "Developer"
+end
 
-local Wm = library:Watermark("Future Hub | V1.1")
+local Wm = library:Watermark("Future Hub | V1.1 | Rank: ".. library.rank)
 
 local Notif = {}
 Notif.Notify = function(typee, text, duration)
@@ -21,12 +24,6 @@ local Init = library:Init()
 
 local newTab = {}
 
-local function createHaxTab(i, name, desc)
-    newTab[i] = Init:NewTab(name)
-    local newSection = newTab[i]:NewSection(desc)
-    return newTab
-end
-
 
 
 local Tab1 = Init:NewTab("Example tab")
@@ -34,13 +31,11 @@ local Section1 = Tab1:NewSection("Inject hax ")
 
 
 
+local haxTab1 = Init:NewTab("Adonis")
+local haxSect1 = haxTab1:NewSection("Adonis Speed Bypass (OBVIOUS BE CAREFUL)")
 
-local haxTab1 = Init:NewTab("hax tab 1")
-local haxSect1 = haxTab1:NewSection("epik hax yes yes")
-
-local haxTab2 = Init:NewTab("hax tab 2")
+local haxTab2 = Init:NewTab("more hax")
 local haxSect2 = haxTab2:NewSection("even more epik hax yes yes")
-
 
 
 haxTab1:Hide()
@@ -48,10 +43,12 @@ haxTab2:Hide()
 
 local buttons = { Button = {} }
 
-buttons.Button[1] = Tab1:NewButton("inject numbuh 1 hax", function()
+buttons.Button[1] = Tab1:NewButton("Inject Adonis Bypasser", function()
     haxTab1:Show()
     wait(0.1)
     buttons.Button[1]:Remove()
+    wait(2)
+    local adonis = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/Adonis%20Speed%20Bypass.lua"))()
 end)
 
 buttons.Button[2] = Tab1:NewButton("inject numbuh 2 hax", function()
@@ -60,6 +57,21 @@ buttons.Button[2] = Tab1:NewButton("inject numbuh 2 hax", function()
     buttons.Button[2]:Remove()
 end)
 
+
+
+local adonisToggle = haxTab1:NewToggle("Toggle Adonis Speed Bypass", false, function(value)
+    if value == true then
+        _G.SpeedEnabled = true
+    else
+        _G.SpeedEnabled = false
+    end
+end)
+
+local adonisSlider = haxTab1:NewSlider("Speed Mulitplier", "", true, "/", {min = 1, max = 10, default = 1}, function(value)
+    adonis.SpeedMultiplier = value / 5
+    print(adonis.SpeedMultiplier)
+end)
+    
 
 
 local FinishedLoading = Notif.Notify("success", "Loaded Future Hub", 4)
