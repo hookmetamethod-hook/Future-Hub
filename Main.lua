@@ -1,10 +1,10 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/UILoader.lua"))()
 
-if _G.Library:GetUsername() == "reshapedd" or "hookmetamethod_hook" then
+if _G.Library.Main:GetUsername() == "reshapedd" or "hookmetamethod_hook" then
     _G.Library.rank = "Developer"
 end
 
-local Wm = _G.Library:Watermark("Future Hub | V1.1 | Rank: ".. _G.Library.rank)
+local Wm = _G.Library.Main:Watermark("Future Hub | V1.1 | Rank: ".. _G.Library.rank)
 
 local notifs = _G.Library.Notifications
 local Notif = {}
@@ -15,11 +15,11 @@ end
 task.wait(0.05)
 local LoadingXSX = Notif.Notify("info", "Loading Future Hub, please be patient.", 3)
 
-_G.Library.title = "Future Hub"
+_G.Library.Main.title = "Future Hub"
 
-_G.Library:Introduction()
+_G.Library.Main:Introduction()
 wait(1)
-local Init = _G.Library:Init()
+local Init = _G.Library.Main:Init()
 
 
 local newTab = {}
