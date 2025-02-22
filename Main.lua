@@ -32,7 +32,7 @@ local Section1 = Tab1:NewSection("Inject hax ")
 
 
 local haxTab1 = Init:NewTab("Adonis")
-local haxSect1 = haxTab1:NewSection("Adonis Speed Bypass (OBVIOUS BE CAREFUL)")
+local haxSect1 = haxTab1:NewSection("Adonis Speed Bypass")
 
 local haxTab2 = Init:NewTab("more hax")
 local haxSect2 = haxTab2:NewSection("even more epik hax yes yes")
@@ -68,7 +68,7 @@ local adonisToggle = haxTab1:NewToggle("Toggle Adonis Speed Bypass", false, func
 end)
 
 local adonisSlider = haxTab1:NewSlider("Speed Mulitplier", "", true, "/", {min = 1, max = 10, default = 1}, function(value)
-    adonis.SpeedMultiplier = value / 5
+    _G.SpeedMultiplier = value
     print(adonis.SpeedMultiplier)
 end)
     
