@@ -226,8 +226,8 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
                 end
             end
         })
-	CharManager:CreateDivider()
-	local CharManagerUnload = CharManager:CreateButton({
+		CharManager:CreateDivider()
+		local CharManagerUnload = CharManager:CreateButton({
             Name = "Unload character manager",
 	    	Description = nil,
             Callback = function()
