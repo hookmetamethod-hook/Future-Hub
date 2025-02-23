@@ -28,3 +28,9 @@ _G.changeProperty = function(property, value)
         return false, err
     end
 end
+
+Plr.CharacterAdded:Connect(function(newChar)
+    Char = newChar
+    humanoid = newChar:WaitForChild("Humanoid")
+    humanoidRootPart = newChar:WaitForChild("HumanoidRootPart")
+end)
