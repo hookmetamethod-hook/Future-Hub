@@ -228,7 +228,7 @@ ConfigTab:BuildConfigSection()
 local Bind = ConfigTab:CreateBind({
 	Name = "Future Interface Bind",
 	Description = "Bind to show/hide Future Hub",
-	CurrentBind = "K", -- Check Roblox Studio Docs For KeyCode Names
+	CurrentBind = "RightShift", -- Check Roblox Studio Docs For KeyCode Names
 	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
     	Callback = function()
     	end,
