@@ -225,6 +225,18 @@ local ConfigTab = Window:CreateTab({
 ConfigTab:BuildConfigSection()
 
 
+local Bind = ConfigTab:CreateBind({
+	Name = "Future Interface Bind",
+	Description = "Bind to show/hide Future Hub",
+	CurrentBind = "K", -- Check Roblox Studio Docs For KeyCode Names
+	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
+    	Callback = function()
+    	end,
+
+	OnChangedCallback = function(Bind)
+	 Window.Bind = Bind
+	end,
+}, "WindowMenuBind") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
 
 
