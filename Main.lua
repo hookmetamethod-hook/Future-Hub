@@ -1,77 +1,233 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/UILoader.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
+local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 
-if _G.Library.Main:GetUsername() == "reshapedd" or "hookmetamethod_hook" then
-    _G.Library.rank = "Developer"
-end
+local Window = Luna:CreateWindow({
+	Name = "Future Hub", -- This Is Title Of Your Window
+	Subtitle = "Made by Userbase and Hookmetamethod_hook", -- A Gray Subtitle next To the main title.
+	LogoID = 139542311686491, -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
+	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
+	LoadingTitle = "Future Hub", -- Header for loading screen
+	LoadingSubtitle = "Exploiting done right", -- Subtitle for loading screen
 
-local Wm = _G.Library.Main:Watermark("Future Hub | V1.1 | Rank: ".. _G.Library.rank)
+	ConfigSettings = {
+		RootFolder = "Future Hub", -- The Root Folder Is Only If You Have A Hub With Multiple Game Scripts and u may remove it. DO NOT ADD A SLASH
+		ConfigFolder = "Configurations" -- The Name Of The Folder Where Luna Will Store Configs For This Script. DO NOT ADD A SLASH
+	},
 
-local notifs = _G.Library.Notifications
-local Notif = {}
-Notif.Notify = function(typee, text, duration)
-    notifs.new(typee, "Notification", text, true, duration)
-end
+	KeySystem = true,
+	KeySettings = {
+		Title = "Future Hub",
+		Subtitle = "Key System",
+		Note = "Enter your access key",
+		SaveInRoot = true,
+		SaveKey = true,
+		Key = {"Hookmetamethod_hook_|fjsdug*DH83dcJN38*#$*gdjj*fd", "userbase_|jfdguie9&h34nHJNG*#nvn", "UNI_TrustedTester_|ujhnjG&4nnmz(G$$#*nmvjHFVNn453"},
+		SecondAction = {
+			Enabled = true,
+			Type = "Discord",
+			Parameter = "c7e5RVuvAR"
+		}
+	}
+})
 
-task.wait(0.05)
-local LoadingXSX = Notif.Notify("info", "Loading Future Hub, please be patient.", 3)
+Window:CreateHomeTab({
+	SupportedExecutors = {"Argon"},
+	DiscordInvite = "c7e5RVuvAR",
+	Icon = 2,
+})
 
-_G.Library.Main.title = "Future Hub"
+local Tab = Window:CreateTab({
+	Name = "Test tab",
+	Icon = "view_in_ar",
+	ImageSource = "Material",
+	ShowTitle = true
+})
 
-_G.Library.Main:Introduction()
-wait(1)
-local Init = _G.Library.Main:Init()
+Tab:CreateSection("Test functions")
+local Paragraph = Tab:CreateParagraph({
+	Title = "This section contains test functions",
+	Text = "(Logs in dev console [F9])"
+})
+Tab:CreateDivider()
 
+Luna:Notification({ 
+	Title = "Notification",
+	Icon = "notifications_active",
+	ImageSource = "Material",
+	Content = "Test notification"
+})
 
-local newTab = {}
+local Button = Tab:CreateButton({
+	Name = "Button",
+	Description = "Test button", -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+            print("Future Hub | Test button pressed!")
+    	end
+})
 
+local Toggle = Tab:CreateToggle({
+	Name = "Toggle",
+	Description = "Test toggle",
+	CurrentValue = false,
+    	Callback = function(Value)
+       	    print("Future Hub | Test toggle switched! Value: "..tostring(Value))
+    	end
+}, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
+local Slider = Tab:CreateSlider({
+	Name = "Slider",
+	Description = "Test slider",
+	Range = {1, 10}, -- The Minimum And Maximum Values Respectively
+	Increment = 0.25, -- Basically The Changing Value/Rounding Off
+	CurrentValue = 1, -- The Starting Value
+    	Callback = function(Value)
+            print("Future Hub | Test slider changed! Value: "..tostring(Value))
+    	end
+}, "Slider") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
-local Tab1 = Init:NewTab("Example tab")
-local Section1 = Tab1:NewSection("Inject hax ")
+local Input = Tab:CreateInput({
+	Name = "Textbox",
+	Description = "Test textbox",
+	PlaceholderText = "Placeholder",
+	CurrentValue = "", -- the current text
+	Numeric = false, -- When true, the user may only type numbers in the box (Example walkspeed)
+	MaxCharacters = nil, -- if a number, the textbox length cannot exceed the number
+	Enter = true, -- When true, the callback will only be executed when the user presses enter.
+    	Callback = function(Text)
+       	    print("Future Hub | Test textbox modified! Text: "..tostring(Text))
+    	end
+}, "Input") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
+local Dropdown = Tab:CreateDropdown({
+	Name = "Dropdown",
+    Description = "Test dropdown",
+	Options = {"Option 1","Option 2"},
+    CurrentOption = {"Option 1"},
+    MultipleOptions = false,
+    SpecialType = nil,
+    Callback = function(Options)
+        print("Future Hub | Test dropdown changed! Option: "..tostring(Options))
+	end
+}, "Dropdown") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
+local Bind = Tab:CreateBind({
+	Name = "Interface Bind",
+	Description = "UI keybind",
+	CurrentBind = "RightShift", -- Check Roblox Studio Docs For KeyCode Names
+	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
+    	Callback = function(BindState)
+     	 -- The function that takes place when the keybind is pressed
+     	 -- The variable (BindState) is a boolean for whether the Bind is being held or not (HoldToInteract needs to be true) OR it is whether the Bind is active
+    	end,
 
-local haxTab1 = Init:NewTab("Adonis")
-local haxSect1 = haxTab1:NewSection("Adonis Speed Bypass")
+	OnChangedCallback = function(Bind)
+        Window.Bind = Bind
+	end,
+}, "WindowMenuBind")
 
-local haxTab2 = Init:NewTab("more hax")
-local haxSect2 = haxTab2:NewSection("even more epik hax yes yes")
+local Label = Tab:CreateLabel({
+	Text = "Label",
+	Style = 1
+})
 
+local Label = Tab:CreateLabel({
+	Text = "Information",
+	Style = 2
+})
 
-haxTab1:Hide()
-haxTab2:Hide()
+local Label = Tab:CreateLabel({
+	Text = "Warning",
+	Style = 3
+})
 
-local buttons = { Button = {} }
+local ScriptInjection = Window:CreateTab({
+	Name = "Script Injection",
+	Icon = 78805791280641,
+	ImageSource = "Custom",
+	ShowTitle = true
+})
 
-buttons.Button[1] = Tab1:NewButton("Inject Adonis Bypasser", function()
-    haxTab1:Show()
-    wait(0.1)
-    buttons.Button[1]:Remove()
-    wait(2)
-    local adonis = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/Adonis%20Speed%20Bypass.lua"))()
-end)
+ScriptInjection:CreateSection("Universal / Misc")
+local Paragraph = ScriptInjection:CreateParagraph({
+	Title = "Important!",
+	Text = "These scripts are all made with the assumption the game uses the default Roblox logic, if character behavior is too heavily customized, certain character related scripts might not work properly, this counts for all other aspects of the game as well."
+})
+ScriptInjection:CreateDivider()
 
-buttons.Button[2] = Tab1:NewButton("inject numbuh 2 hax", function()
-    haxTab2:Show()
-    wait(0.1)
-    buttons.Button[2]:Remove()
-end)
-
-
-
-local adonisToggle = haxTab1:NewToggle("Toggle Adonis Speed Bypass", false, function(value)
-    if value == true then
-        _G.SpeedEnabled = true
-    else
-        _G.SpeedEnabled = false
+local CharacterManagerInjected = false
+local InjectCharacterManagerButton = ScriptInjection:CreateButton({
+	Name = "Character manager",
+	Description = nil,
+    Callback = function()
+        if CharacterManagerInjected then return end
+        CharacterManagerInjected = true
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/characterManager.lua"))()
+        local CharManager = Window:CreateTab({
+            Name = "Character Manager",
+	        Icon = 125214730779893,
+	        ImageSource = "Custom",
+	        ShowTitle = false
+        })
+        CharManager:CreateParagraph({
+            Title = "Character Manager",
+            Text = "This script allows you to manage your character's properties"
+        })
+        CharManager:CreateDivider()
+        local CharManagerWalkSpeedSlider = CharManager:CreateSlider({
+	        Name = "Walk Speed",
+	        Description = nil,
+	        Range = {1, 999},
+	        Increment = 0.1,
+	        CurrentValue = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed,
+        	Callback = function(Value)
+                local success, err = _G.changeProperty("WalkSpeed", Value)
+        	end
+        }, "CharManagerWalkSpeedSlider")
+        local CharManagerWalkSpeedReset = CharManager:CreateButton({
+            Name = "Reset Walk Speed",
+	        Description = nil,
+            Callback = function()
+                local success, err = _G.changeProperty("WalkSpeed", 16)
+                CharManagerWalkSpeedSlider:Set({
+                    CurrentValue = 16
+                })
+            end
+        })
+        CharManager:CreateDivider()
+        local CharManagerJumpPowerSlider = CharManager:CreateSlider({
+	        Name = "Jump Power",
+	        Description = nil,
+	        Range = {1, 999},
+	        Increment = 0.1,
+	        CurrentValue = game.Players.LocalPlayer.Character.Humanoid.JumpPower,
+        	Callback = function(Value)
+                local success, err = _G.changeProperty("JumpPower", Value)
+        	end
+        }, "CharManagerJumpPowerSlider")
+        local CharManagerJumpPowerReset = CharManager:CreateButton({
+            Name = "Reset Jump Power",
+	        Description = nil,
+            Callback = function()
+                local success, err = _G.changeProperty("JumpPower", 50)
+                CharManagerJumpPowerSlider:Set({
+                    CurrentValue = 50
+                })
+            end
+        })
+        CharManager:CreateDivider()
+        local CharManagerForceReset = CharManager:CreateButton({
+            Name = "Force reset",
+	        Description = "Attempts to reset normally, voids character if it fails",
+            Callback = function()
+                _G.changeProperty("Health", 0)
+                task.wait()
+                if game.Players.LocalPlayer.Character.Humanoid.Health >= 1 then
+                    _G.changeProperty("CFrame", CFrame.new(math.huge, math.huge, math.huge))
+                end
+            end
+        })
     end
-end)
-
-local adonisSlider = haxTab1:NewSlider("Speed Mulitplier", "", true, "/", {min = 1, max = 10, default = 1}, function(value)
-    _G.SpeedMultiplier = value
-    print(adonis.SpeedMultiplier)
-end)
-    
+})
 
 
-local FinishedLoading = Notif.Notify("success", "Loaded Future Hub", 4)
+Luna:LoadAutoloadConfig()
