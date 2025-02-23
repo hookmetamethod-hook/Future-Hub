@@ -1,7 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 
-print("Future Hub | In-Dev V0.2.1")
+print("Future Hub | In-Dev V0.2.2")
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
