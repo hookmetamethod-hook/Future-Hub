@@ -1,7 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 
-print("Future Hub | In-Dev V0.2.2")
+print("Future Hub | In-Dev V0.2.3")
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
@@ -23,7 +23,7 @@ local Window = Luna:CreateWindow({
 		Note = "Enter your access key",
 		SaveInRoot = true,
 		SaveKey = true,
-		Key = {"override", "Hookmetamethod_hook_|fjsdug*DH83dcJN38*#$*gdjj*fd", "userbase_|jfdguie9&h34nHJNG*#nvn", "UNI_TrustedTester_|ujhnjG&4nnmz(G$$#*nmvjHFVNn453"},
+		Key = {"override", "Hookmetamethod_hook_|fjsdugDH83dcJN38gdjjfd", "userbase_|jfdguie9h34nHJNGnvn", "UNI_TrustedTester_|ujhnjG4nnmzGnmvjHFVNn453"},
 		SecondAction = {
 			Enabled = true,
 			Type = "Discord",
