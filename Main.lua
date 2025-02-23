@@ -21,7 +21,7 @@ local Window = Luna:CreateWindow({
 		Note = "Enter your access key",
 		SaveInRoot = true,
 		SaveKey = true,
-		Key = {"Hookmetamethod_hook_|fjsdug*DH83dcJN38*#$*gdjj*fd", "userbase_|jfdguie9&h34nHJNG*#nvn", "UNI_TrustedTester_|ujhnjG&4nnmz(G$$#*nmvjHFVNn453"},
+		Key = {"override", "Hookmetamethod_hook_|fjsdug*DH83dcJN38*#$*gdjj*fd", "userbase_|jfdguie9&h34nHJNG*#nvn", "UNI_TrustedTester_|ujhnjG&4nnmz(G$$#*nmvjHFVNn453"},
 		SecondAction = {
 			Enabled = true,
 			Type = "Discord",
@@ -110,20 +110,6 @@ local Dropdown = Tab:CreateDropdown({
 	end
 }, "Dropdown") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
-local Bind = Tab:CreateBind({
-	Name = "Interface Bind",
-	Description = "UI keybind",
-	CurrentBind = "RightShift", -- Check Roblox Studio Docs For KeyCode Names
-	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
-    	Callback = function(BindState)
-     	 -- The function that takes place when the keybind is pressed
-     	 -- The variable (BindState) is a boolean for whether the Bind is being held or not (HoldToInteract needs to be true) OR it is whether the Bind is active
-    	end,
-
-	OnChangedCallback = function(Bind)
-        Window.Bind = Bind
-	end,
-}, "WindowMenuBind")
 
 local Label = Tab:CreateLabel({
 	Text = "Label",
@@ -217,7 +203,7 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
         CharManager:CreateDivider()
         local CharManagerForceReset = CharManager:CreateButton({
             Name = "Force reset",
-	    	Description = "Attempts to reset normally, voids character if it fails",
+	        Description = "Attempts to reset normally, voids character if it fails",
             Callback = function()
                 _G.changeProperty("Health", 0)
                 task.wait()
@@ -226,18 +212,25 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
                 end
             end
         })
-		CharManager:CreateDivider()
-		local CharManagerUnload = CharManager:CreateButton({
-            Name = "Unload character manager",
-	    	Description = nil,
-            Callback = function()
-                _G.changeProperty = nil
-                CharacterManagerInjected = false
-				CharManager:Destroy()
-            end
-        })
     end
 })
+
+
+
+local ConfigTab = Window:CreateTab({
+    Name = "Config",
+    Icon = "build",
+    ImageSource = "Material",
+    ShowTitle = true
+})
+
+ConfigTab:BuildConfigSection()
+
+
+
+
+
+
 
 
 Luna:LoadAutoloadConfig()
