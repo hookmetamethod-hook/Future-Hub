@@ -203,13 +203,24 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
             end
         })
         CharManager:CreateDivider()
+	local CharManagerForceReset = CharManager:CreateButton({
+            Name = "Force reset",
+	    Description = "Attempts to reset normally, voids character if it fails",
+            Callback = function()
+                _G.changeProperty("Health", 0)
+                task.wait()
+                if game.Players.LocalPlayer.Character.Humanoid.Health >= 1 then
+                    _G.changeProperty("CFrame", CFrame.new(math.huge, math.huge, math.huge))
+                end
+            end
+        })
         local CharManagerUnload = CharManager:CreateButton({
             Name = "Unload character manager",
 	    	Description = nil,
             Callback = function()
                 _G.changeProperty = nil
                 CharacterManagerInjected = false
-				CharManager:Destroy()
+		CharManager:Destroy()
             end
         })
     end
