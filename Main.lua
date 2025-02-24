@@ -1,7 +1,12 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
+local NotifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
-print("Future Hub | In-Dev V0.3.5")
+print("Future Hub | In-Dev V0.4.7")
+
+_G.Notify = function(Type, Text, Duration)
+	NotifLib.new(Type, "Future Hub", Text, true, Duration, nil)
+end
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
@@ -52,13 +57,6 @@ local Paragraph = Tab:CreateParagraph({
 })
 Tab:CreateDivider()
 
-Luna:Notification({ 
-	Title = "Notification",
-	Icon = "notifications_active",
-	ImageSource = "Material",
-	Content = "Test notification"
-})
-
 local Button = Tab:CreateButton({
 	Name = "Button",
 	Description = "Test button", -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
@@ -95,9 +93,9 @@ local Input = Tab:CreateInput({
 	Numeric = false, -- When true, the user may only type numbers in the box (Example walkspeed)
 	MaxCharacters = nil, -- if a number, the textbox length cannot exceed the number
 	Enter = true, -- When true, the callback will only be executed when the user presses enter.
-    	Callback = function(Text)
-       	    print("Future Hub | Test textbox modified! Text: "..tostring(Text))
-    	end
+    Callback = function(Text)
+   	    print("Future Hub | Test textbox modified! Text: "..tostring(Text))
+    end
 }, "Input") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
 local Dropdown = Tab:CreateDropdown({
@@ -256,6 +254,35 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
     end
 })
 
+local SLJOExploitInjected = false
+local InjectSLJOExploitButton = ScriptInjection:CreateButton({
+	Name = "SLJOExploit",
+	Description = "Game: Stud Long Jumps Obby - @JadonBarth",
+    Callback = function()
+        if SLJOExploitInjected then return end
+        SLJOExploitInjected = true
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/StudLongJumpObbyExploit.lua"))()
+        local SLJOExploit = Window:CreateTab({
+            Name = "Stud Long Jumps Obby",
+	        Icon = 125214730779893,
+	        ImageSource = "Custom",
+	        ShowTitle = false
+        })
+        SLJOExploit:CreateParagraph({
+            Title = "Stud Long Jumps Obby Exploit",
+            Text = "This script hijacks the buttons at the top of the screen to let you move between all the stages even if you didnt unlock them yet"
+        })
+        SLJOExploit:CreateDivider()
+		SLJOExploit:CreateToggle({
+			Name = "Auto Rebirth",
+	    	Description = "Automatically rebirth when stage 45 is reached",
+			CurrentValue = false,
+        	Callback = function(Value)
+           		_G.AutoRebirth = Value
+        	end
+		}, "SLJOExploitAutoRebirth")
+	end
+})
 Window.Bind = Enum.KeyCode.RightShift
 
 local ConfigTab = Window:CreateTab({
