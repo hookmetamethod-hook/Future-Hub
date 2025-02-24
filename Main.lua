@@ -2,7 +2,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/F
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 local NotifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
-print("Future Hub | In-Dev V0.4.7")
+print("Future Hub | In-Dev V0.4.8")
 
 _G.Notify = function(Type, Text, Duration)
 	NotifLib.new(Type, "Future Hub", Text, true, Duration, nil)
@@ -258,31 +258,48 @@ local SLJOExploitInjected = false
 local InjectSLJOExploitButton = ScriptInjection:CreateButton({
 	Name = "SLJOExploit",
 	Description = "Game: Stud Long Jumps Obby - @JadonBarth",
-    Callback = function()
-        if SLJOExploitInjected then return end
-        SLJOExploitInjected = true
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/StudLongJumpObbyExploit.lua"))()
-        local SLJOExploit = Window:CreateTab({
-            Name = "Stud Long Jumps Obby",
-	        Icon = 125214730779893,
-	        ImageSource = "Custom",
-	        ShowTitle = false
-        })
-        SLJOExploit:CreateParagraph({
-            Title = "Stud Long Jumps Obby Exploit",
-            Text = "This script hijacks the buttons at the top of the screen to let you move between all the stages even if you didnt unlock them yet"
-        })
-        SLJOExploit:CreateDivider()
+	Callback = function()
+        	if SLJOExploitInjected then return end
+        	SLJOExploitInjected = true
+        	loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/StudLongJumpObbyExploit.lua"))()
+        	local SLJOExploit = Window:CreateTab({
+        		Name = "Stud Long Jumps Obby",
+	        	Icon = 125214730779893,
+	        	ImageSource = "Custom",
+	        	ShowTitle = false
+        	})
+        	SLJOExploit:CreateParagraph({
+        		Title = "Stud Long Jumps Obby Exploit",
+        		Text = "This script hijacks the buttons at the top of the screen to let you move between all the stages even if you didnt unlock them yet"
+		})
+        	SLJOExploit:CreateDivider()
 		SLJOExploit:CreateToggle({
 			Name = "Auto Rebirth",
-	    	Description = "Automatically rebirth when stage 45 is reached",
+			Description = "Automatically rebirth when stage 45 is reached",
 			CurrentValue = false,
-        	Callback = function(Value)
-           		_G.AutoRebirth = Value
-        	end
+        		Callback = function(Value)
+          			_G.AutoRebirth = Value
+        		end
 		}, "SLJOExploitAutoRebirth")
+		SLJOExploit:CreateToggle({
+			Name = "Auto Skip",
+			Description = "Automatically skips to the next stage (Auto Rebirth recommended)",
+			CurrentValue = false,
+        		Callback = function(Value)
+          			_G.AutoSkip = Value
+        		end
+		}, "SLJOExploitAutoSkip")
+		while _G.AutoSkip == true do
+			local stage = game.Players.LocalPlayer.leaderstats.Stage.Value
+			local nextPos = _G.stagePositions[tostring(stage)]
+            		if nextPos then
+                		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = nextPos
+           		end
+			task.wait(0.6)
+		end
 	end
 })
+
 Window.Bind = Enum.KeyCode.RightShift
 
 local ConfigTab = Window:CreateTab({
