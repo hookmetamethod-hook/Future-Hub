@@ -1,7 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 
-print("Future Hub | In-Dev V0.2.3")
+print("Future Hub | In-Dev V0.2.4")
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
@@ -221,7 +221,7 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
             Callback = function()
                 _G.changeProperty = nil
                 CharacterManagerInjected = false
-		CharManager:Destroy()
+		CharManager:Remove()
             end
         })
     end
