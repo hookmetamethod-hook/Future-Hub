@@ -1,7 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 
-print("Future Hub | In-Dev V0.2.4")
+print("Future Hub | In-Dev V0.3.4")
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
@@ -23,7 +23,7 @@ local Window = Luna:CreateWindow({
 		Note = "Enter your access key",
 		SaveInRoot = true,
 		SaveKey = true,
-		Key = {"override", "Hookmetamethod_hook_|fjsdugDH83dcJN38gdjjfd", "userbase_|jfdguie9h34nHJNGnvn", "UNI_TrustedTester_|ujhnjG4nnmzGnmvjHFVNn453"},
+		Key = {"Hookmetamethod_hook_|fjsdugDH83dcJN38gdjjfd", "userbase_|jfdguie9h34nHJNGnvn", "UNI_TrustedTester_|ujhnjG4nnmzGnmvjHFVNn453"},
 		SecondAction = {
 			Enabled = true,
 			Type = "Discord",
@@ -182,6 +182,7 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
             end
         })
         CharManager:CreateDivider()
+		local JumpHeight = game.Players.LocalPlayer.Character.Humanoid.JumpHeight
         local CharManagerJumpPowerSlider = CharManager:CreateSlider({
 	        Name = "Jump Power",
 	        Description = nil,
@@ -189,39 +190,66 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
 	        Increment = 0.1,
 	        CurrentValue = game.Players.LocalPlayer.Character.Humanoid.JumpPower,
         	Callback = function(Value)
-                local success, err = _G.changeProperty("JumpPower", Value)
+            	_G.changeProperty("JumpPower", Value)
+				JumpHeight = Value
         	end
         }, "CharManagerJumpPowerSlider")
         local CharManagerJumpPowerReset = CharManager:CreateButton({
             Name = "Reset Jump Power",
-	        Description = nil,
+			Description = nil,
             Callback = function()
-                local success, err = _G.changeProperty("JumpPower", 50)
+                _G.changeProperty("JumpPower", 50)
                 CharManagerJumpPowerSlider:Set({
                     CurrentValue = 50
                 })
+				JumpHeight = 50
             end
         })
+	
+		local Player = game:GetService'Players'.LocalPlayer
+		local UIS = game:GetService'UserInputService'
+		local function Action(Object, Function) if Object ~= nil then Function(Object) end end
+		local infjumpenabled = false
+		UIS.InputBegan:connect(function(UserInput)
+    		if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+        		Action(Player.Character.Humanoid, function(self)
+            		if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall and infjumpenabled then
+            			Action(self.Parent.HumanoidRootPart, function(self)
+              				self.Velocity = Vector3.new(0, 0, 0);
+                    		self.Velocity = Vector3.new(0, JumpHeight + 2, 0);
+                		end)
+        	    	end
+        		end)
+    		end
+		end)
+		CharManager:CreateToggle({
+			Name = "Air Jump",
+	    	Description = "Allows you to jump in the air",
+			CurrentValue = false,
+        	Callback = function(Value)
+           		infjumpenabled = Value
+        	end
+		}, "CharManagerAirJump")
         CharManager:CreateDivider()
-	local CharManagerForceReset = CharManager:CreateButton({
-            Name = "Force reset",
-	    Description = "Attempts to reset normally, voids character if it fails",
-            Callback = function()
-                _G.changeProperty("Health", 0)
-                task.wait()
-                if game.Players.LocalPlayer.Character.Humanoid.Health >= 1 then
-                    _G.changeProperty("CFrame", CFrame.new(math.huge, math.huge, math.huge))
-                end
-            end
+		local CharManagerForceReset = CharManager:CreateButton({
+        	Name = "Force reset",
+	    	Description = "Attempts to reset normally, voids character if it fails",
+        	Callback = function()
+           		_G.changeProperty("Health", 0)
+           		task.wait()
+        	   	if game.Players.LocalPlayer.Character.Humanoid.Health >= 1 then
+           	    	_G.changeProperty("CFrame", CFrame.new(math.huge, math.huge, math.huge))
+           		end
+        	end
         })
-	CharManager:CreateDivider()
+		CharManager:CreateDivider()
         local CharManagerUnload = CharManager:CreateButton({
             Name = "Unload character manager",
 	    	Description = nil,
             Callback = function()
                 _G.changeProperty = nil
                 CharacterManagerInjected = false
-		CharManager:Destroy()
+				CharManager:Destroy()
             end
         })
     end
