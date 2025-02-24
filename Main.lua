@@ -221,7 +221,7 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
             Callback = function()
                 _G.changeProperty = nil
                 CharacterManagerInjected = false
-		CharManager:Remove()
+		CharManager:Destroy()
             end
         })
     end
