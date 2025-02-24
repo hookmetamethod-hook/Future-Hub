@@ -1,7 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/protectui.lua"))()
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 
-print("Future Hub | In-Dev V0.3.4")
+print("Future Hub | In-Dev V0.3.5")
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
@@ -213,7 +213,8 @@ local InjectCharacterManagerButton = ScriptInjection:CreateButton({
 		UIS.InputBegan:connect(function(UserInput)
     		if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
         		Action(Player.Character.Humanoid, function(self)
-            		if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall and infjumpenabled then
+            		if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+						if infjumpenabled == false then return end
             			Action(self.Parent.HumanoidRootPart, function(self)
               				self.Velocity = Vector3.new(0, 0, 0);
                     		self.Velocity = Vector3.new(0, JumpHeight + 2, 0);
