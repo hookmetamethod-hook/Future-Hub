@@ -281,22 +281,6 @@ local InjectSLJOExploitButton = ScriptInjection:CreateButton({
           			_G.AutoRebirth = Value
         		end
 		}, "SLJOExploitAutoRebirth")
-		SLJOExploit:CreateToggle({
-			Name = "Auto Skip",
-			Description = "Automatically skips to the next stage (Auto Rebirth recommended)",
-			CurrentValue = false,
-        		Callback = function(Value)
-          			_G.AutoSkip = Value
-        		end
-		}, "SLJOExploitAutoSkip")
-		while _G.AutoSkip == true do
-			local stage = game.Players.LocalPlayer.leaderstats.Stage.Value
-			local nextPos = _G.stagePositions[tostring(stage)]
-            		if nextPos then
-                		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = nextPos
-           		end
-			task.wait(0.6)
-		end
 	end
 })
 
