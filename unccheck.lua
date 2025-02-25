@@ -856,3 +856,6 @@ test("WebSocket.connect", {}, function()
 	end
 	ws:Close()
 end)
+
+task.wait(2.5)
+return returnedratexoutofx
