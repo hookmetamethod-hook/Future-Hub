@@ -9,16 +9,16 @@ _G.Notify = function(Type, Text, Duration)
 end
 
 local Window = Luna:CreateWindow({
-	Name = "Future Hub", -- This Is Title Of Your Window
-	Subtitle = "Made by Hookmetamethod_hook and Userbase", -- A Gray Subtitle next To the main title.
-	LogoID = 139542311686491, -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
-	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
-	LoadingTitle = "Future Hub", -- Header for loading screen
-	LoadingSubtitle = "Exploiting done right", -- Subtitle for loading screen
+	Name = "Future Hub",
+	Subtitle = "Made by Hookmetamethod_hook and Userbase",
+	LogoID = 139542311686491,
+	LoadingEnabled = true,
+	LoadingTitle = "Future Hub",
+	LoadingSubtitle = "Exploiting done right",
 
 	ConfigSettings = {
-		RootFolder = "Future Hub", -- The Root Folder Is Only If You Have A Hub With Multiple Game Scripts and u may remove it. DO NOT ADD A SLASH
-		ConfigFolder = "Configurations" -- The Name Of The Folder Where Luna Will Store Configs For This Script. DO NOT ADD A SLASH
+		RootFolder = "Future Hub",
+		ConfigFolder = "Configurations"
 	},
 
 	KeySystem = true,
