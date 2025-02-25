@@ -2,7 +2,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/F
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 local NotifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
-print("Future Hub | In-Dev V0.5.11") 
+print("Future Hub | In-Dev V0.5.12") 
 
 _G.Notify = function(Type, Text, Duration)
 	NotifLib.new(Type, "Future Hub", Text, true, Duration, nil)
@@ -10,7 +10,7 @@ end
 
 local Window = Luna:CreateWindow({
 	Name = "Future Hub", -- This Is Title Of Your Window
-	Subtitle = "Made by Userbase and Hookmetamethod_hook", -- A Gray Subtitle next To the main title.
+	Subtitle = "Made by Hookmetamethod_hook and Userbase", -- A Gray Subtitle next To the main title.
 	LogoID = 139542311686491, -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
 	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
 	LoadingTitle = "Future Hub", -- Header for loading screen
