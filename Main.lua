@@ -2,7 +2,15 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/F
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 local NotifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
-print("Future Hub | In-Dev V0.5.12") 
+_G.GetFHVersion = function(Type)
+	if Type == "Full" then
+		return "In-Dev V0.5.13"
+	elseif Type == "Raw" then
+		return {["Major"] = 0, ["Minor"] = 5, ["Patch"] = 13}
+	end
+end
+local Version = _G.GetFHVersion("Full")
+print("Future Hub | "..Version) 
 
 _G.Notify = function(Type, Text, Duration)
 	NotifLib.new(Type, "Future Hub", Text, true, Duration, nil)
