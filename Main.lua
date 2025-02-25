@@ -2,7 +2,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/F
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 local NotifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
-print("Future Hub | In-Dev V0.5.10") 
+print("Future Hub | In-Dev V0.5.11") 
 
 _G.Notify = function(Type, Text, Duration)
 	NotifLib.new(Type, "Future Hub", Text, true, Duration, nil)
@@ -28,7 +28,7 @@ local Window = Luna:CreateWindow({
 		Note = "Enter your access key",
 		SaveInRoot = true,
 		SaveKey = true,
-		Key = {"Hookmetamethod_hook_|fjsdugDH83dcJN38gdjjfd", "userbase_|jfdguie9h34nHJNGnvn", "UNI_TrustedTester_|ujhnjG4nnmzGnmvjHFVNn453"},
+		Key = {"centigolden_|hnfjUIugi84fjn389GNN3489Ff", "Hookmetamethod_hook_|fjsdugDH83dcJN38gdjjfd", "userbase_|jfdguie9h34nHJNGnvn", "UNI_TrustedTester_|ujhnjG4nnmzGnmvjHFVNn453"},
 		SecondAction = {
 			Enabled = true,
 			Type = "Discord",
