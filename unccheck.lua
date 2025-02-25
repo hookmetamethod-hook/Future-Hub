@@ -1,3 +1,4 @@
+print("e")
 local passes, fails, undefined = 0, 0, 0
 local running = 0
 
@@ -49,14 +50,15 @@ end
 
 -- Header and summary
 
-local returnedratexoutofx = nil
 task.defer(function()
+	print("a")
 	repeat task.wait() until running == 0
+	print("b")
 
 	local rate = math.round(passes / (passes + fails) * 100)
 	local outOf = passes .. " out of " .. (passes + fails)
-
-	returnedratexoutofx = tostring(rate).." ("..outOf.." checks)")
+	print("d")
+	return tostring(rate).." ("..outOf.." checks)")
 end)
 
 -- Cache
@@ -857,5 +859,3 @@ test("WebSocket.connect", {}, function()
 	ws:Close()
 end)
 
-task.wait(2.5)
-return returnedratexoutofx
