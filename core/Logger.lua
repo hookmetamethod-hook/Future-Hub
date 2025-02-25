@@ -266,7 +266,7 @@ function Console:Window(consoledebugger)
         elseif Type == ("warning") then
             TextLabel.Text = tostring(WarningTitle)
             TextLabel.TextColor3 = Color3.fromRGB(202, 156, 107)
-        elseif Type == ("nofitication") then
+        elseif Type == ("notification") then
             TextLabel.Text = tostring(NofiticationTitle)
             TextLabel.TextColor3 = Color3.fromRGB(121, 130, 255)
         end
