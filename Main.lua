@@ -281,6 +281,13 @@ local InjectSLJOExploitButton = ScriptInjection:CreateButton({
           			_G.AutoRebirth = Value
         		end
 		}, "SLJOExploitAutoRebirth")
+		SLJOExploit:CreateButton({
+			Name = "Rebirth",
+			Description = "Fires rebirth RE (bypasses the cooldown)",
+			Callback = function()
+				game.ReplicatedStorage.RebirthEvent:FireServer()
+			end
+		})
 	end
 })
 
