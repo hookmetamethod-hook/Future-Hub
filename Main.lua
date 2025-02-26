@@ -46,7 +46,7 @@ local Window = Luna:CreateWindow({
 })
 
 Window:CreateHomeTab({
-	SupportedExecutors = {"Argon"},
+	SupportedExecutors = {"Argon", "AWP", "Atlantis"},
 	DiscordInvite = "c7e5RVuvAR",
 	Icon = 2,
 })
