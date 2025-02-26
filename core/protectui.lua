@@ -46,7 +46,7 @@ if not _G.FutureHooks.GuiDetectionBypass then
     end
     
     local old
-    old = hookfunc(ContentProvider.PreloadAsync, function(self, tbl, cb)
+    old = hookfunction(ContentProvider.PreloadAsync, function(self, tbl, cb)
         if self ~= ContentProvider or type(tbl) ~= "table" or type(cb) ~= "function" then
             return old(self, tbl, cb)
         end
