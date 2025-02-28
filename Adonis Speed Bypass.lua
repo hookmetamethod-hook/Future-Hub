@@ -1,3 +1,5 @@
+_G.FH_ASB_Loaded = "Loading"
+
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -19,3 +21,5 @@ end)
 Player.CharacterAdded:Connect(function(newCharacter)
 	Char = newCharacter
 end)
+
+_G.FH_ASB_Loaded = "Loaded"
