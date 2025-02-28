@@ -2,11 +2,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/F
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/source.lua", true))()
 local NotifLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/core/NotificationLib.lua"))()
 
+_G.SpeedToggleSet = false
+
 _G.GetFHVersion = function(Type)
 	if Type == "Full" then
-		return "In-Dev V0.5.13"
+		return "In-Dev V0.6.13"
 	elseif Type == "Raw" then
-		return {["Major"] = 0, ["Minor"] = 5, ["Patch"] = 13}
+		return {["Major"] = 0, ["Minor"] = 6, ["Patch"] = 13}
 	end
 end
 local Version = _G.GetFHVersion("Full")
@@ -298,6 +300,57 @@ local InjectSLJOExploitButton = ScriptInjection:CreateButton({
 		})
 	end
 })
+AdonisInjected = false
+local InjectAdonisSpeedButton = ScriptInjection:CreateButton({
+    Name = "Adonis Speed Exploit",
+    Description = "High Risk: Very Obvious",
+    Callback = function()
+        if AdonisInjected then return end
+        AdonisInjected = true
+        if _G.FH_ASB_Loaded ~= "Loaded" or "Loading" then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmetamethod-hook/Future-Hub/refs/heads/main/Adonis%20Speed%20Bypass.lua"))()
+        end
+        wait(1)
+        _G.SpeedEnabled = false
+        _G.SpeedMultiplier = 1
+        local AdonisExploit = Window:CreateTab({
+            Name = "Adonis",
+            Icon = "directions_run",
+            ImageSource = "Material",
+            ShowTitle = false,
+        })
+        AdonisExploit:CreateParagraph({
+            Title = "Adonis Speed Bypass Exploit",
+            Text = "Allows you to bypass Adonis speedchecks and go as fast as you need"
+        })
+        AdonisExploit:CreateDivider()
+        AdonisExploit:CreateToggle({
+            Name = "Speed Toggle",
+            Description = "Toggle Speed On or Off",
+            CurrentValue = false,
+            Callback = function(Value)
+                _G.SpeedEnabled = Value
+                print(_G.SpeedEnabled)
+            end
+        }, "AdonisSpeedToggle")
+        AdonisExploit:CreateSlider({
+            Name = "Slider",
+	        Description = "Test slider",
+	        Range = {1, 30}, -- The Minimum And Maximum Values Respectively
+	        Increment = 0.5, -- Basically The Changing Value/Rounding Off
+	        CurrentValue = 1, -- The Starting Value
+    	    Callback = function(Value)
+                if Value ~= 1 then
+                    _G.SpeedMultiplier = Value / 3
+                    print(_G.SpeedMultiplier)
+                else
+                    _G.SpeedMultiplier = 0.2
+                    print(_G.SpeedMultiplier)
+                end
+    	    end
+        }, "AdonisSpeedMultiplier")
+    end
+})
 
 Window.Bind = Enum.KeyCode.RightShift
 
@@ -314,7 +367,7 @@ ConfigTab:BuildConfigSection()
 local Bind = ConfigTab:CreateBind({
 	Name = "Future Interface Bind",
 	Description = "Bind to show/hide Future Hub",
-	CurrentBind = "RightShift", -- Check Roblox Studio Docs For KeyCode Names
+	CurrentBind = "K", -- Check Roblox Studio Docs For KeyCode Names
 	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
     	Callback = function()
     	end,
