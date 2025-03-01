@@ -6,7 +6,7 @@ _G.SpeedToggleSet = false
 
 _G.GetFHVersion = function(Type)
 	if Type == "Full" then
-		return "In-Dev V0.6.13"
+		return "In-Dev V0.6.14"
 	elseif Type == "Raw" then
 		return {["Major"] = 0, ["Minor"] = 6, ["Patch"] = 13}
 	end
@@ -19,7 +19,7 @@ _G.Notify = function(Type, Text, Duration)
 end
 
 local Window = Luna:CreateWindow({
-	Name = "Future Hub",
+	Name = "Future Hub | "..Version,
 	Subtitle = "Made by Hookmetamethod_hook and Userbase",
 	LogoID = 139542311686491,
 	LoadingEnabled = true,
