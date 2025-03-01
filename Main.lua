@@ -31,7 +31,7 @@ local Window = Luna:CreateWindow({
 		ConfigFolder = "Configurations"
 	},
 
-	KeySystem = true,
+	KeySystem = false,
 	KeySettings = {
 		Title = "Future Hub",
 		Subtitle = "Key System",
@@ -52,6 +52,32 @@ Window:CreateHomeTab({
 	DiscordInvite = "c7e5RVuvAR",
 	Icon = 2,
 })
+
+
+local ConfigTab = Window:CreateTab({
+    Name = "Config",
+    Icon = "build",
+    ImageSource = "Material",
+    ShowTitle = true
+})
+
+ConfigTab:BuildConfigSection()
+
+
+local Bind = ConfigTab:CreateBind({
+	Name = "Future Interface Bind",
+	Description = "Bind to show/hide Future Hub",
+	CurrentBind = "K", -- Check Roblox Studio Docs For KeyCode Names
+	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
+    	Callback = function()
+    	end,
+
+	OnChangedCallback = function(Bind)
+	 Window.Bind = Bind
+	end,
+}, "WindowMenuBind") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+
 
 local Tab = Window:CreateTab({
 	Name = "Test tab",
@@ -352,32 +378,43 @@ local InjectAdonisSpeedButton = ScriptInjection:CreateButton({
     end
 })
 
-Window.Bind = Enum.KeyCode.RightShift
 
-local ConfigTab = Window:CreateTab({
-    Name = "Config",
-    Icon = "build",
-    ImageSource = "Material",
-    ShowTitle = true
+local DebugTab = Window:CreateTab({
+	Name = "Debug Tools",
+	Icon = "code",
+	ImageSource = "Material",
+	ShowTitle = true
 })
 
-ConfigTab:BuildConfigSection()
+local DebugParagraph = DebugTab:CreateParagraph({
+	Title = "Game Debugging Tools",
+    Text = "A bunch of nice to have game debugging tools and just essential scripts for normal use"
+})
+
+local DebugDisclamer = DebugTab:CreateLabel({
+	Text = "All of these scripts are based on YOUR executor level, some may not work!",
+	Style = 3
+})
+DebugTab:CreateDivider()
 
 
-local Bind = ConfigTab:CreateBind({
-	Name = "Future Interface Bind",
-	Description = "Bind to show/hide Future Hub",
-	CurrentBind = "K", -- Check Roblox Studio Docs For KeyCode Names
-	HoldToInteract = false, -- When true, Instead of toggling, You hold to achieve the active state of the Bind
-    	Callback = function()
-    	end,
+local IFYield = DebugTab:CreateButton({
+	Name = "Infinite Yield",
+	Description = "A multi use script that can do mostly anything you might need it to",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+		print("IFYield Loaded!")
+	end
+})
 
-	OnChangedCallback = function(Bind)
-	 Window.Bind = Bind
-	end,
-}, "WindowMenuBind") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-
-
+local DarkDex = DebugTab:CreateButton({
+	Name = "Dark Dex Explorer",
+	Description = "A game file explorer working liek roblox studio to explroe the games assets and scripts",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AnimatedKurai/Scripts/refs/heads/main/Dex%20Explorer.txt"))()
+		print("Dex Loaded!")
+	end
+})
 
 
 
