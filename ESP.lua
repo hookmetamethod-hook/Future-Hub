@@ -1,3 +1,5 @@
+_G.ESPStatus = "Loading"
+
 _G.ESPEnabled = false
 _G.ESPColour = Color3.fromRGB(255, 255, 255)
 
@@ -39,3 +41,5 @@ pcall(
 		)
 	end
 )
+
+_G.ESPStatus = "Loaded"
