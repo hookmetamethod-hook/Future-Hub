@@ -1,3 +1,5 @@
+_G.ESPStatus = "Loading"
+
 _G.ESPEnabled = true
 _G.ESPColour = Color3.fromRGB(255, 255, 255)
 
@@ -52,3 +54,5 @@ while true do
 	end
 	wait(0.1)
 end
+
+_G.ESPStatus = "Loaded!"
