@@ -3,39 +3,52 @@ _G.ESPColour = Color3.fromRGB(255, 255, 255)
 
 local highlight = Instance.new("Highlight")
 
--- Function to apply ESP to a character
-local function ApplyESP(Char)
-	if Char and not Char:FindFirstChild("Highlight") then
-		local NewHighlight = highlight:Clone()
-		NewHighlight.Parent = Char
-		NewHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-		NewHighlight.FillColor = _G.ESPColour
-	end
-end
-
--- Connect CharacterAdded for all current players
 for _, v in pairs(game.Players:GetPlayers()) do
-	if v.Character then
-		ApplyESP(v.Character)
+	if not v.Character:FindFirstChild("Highlight") then
+		highlight:Clone().Parent = v.Character
+		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+		highlight.FillColor = _G.ESPColour
 	end
-	v.CharacterAdded:Connect(ApplyESP) -- Ensures ESP is applied on respawn
 end
 
--- Ensure new players also get CharacterAdded connected
-game.Players.PlayerAdded:Connect(function(plr)
-	plr.CharacterAdded:Connect(applyESP)
-end)
-
-while true do
-	for _, v in pairs(game.Players:GetPlayers()) do
-		if v.Character then
-			local CharHighlight = v.Character:FindFirstChild("Highlight")
-			if CharHighlight then
-				CharHighlight.Enabled = _G.ESPEnabled
-				CharHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-				CharHighlight.FillColor = _G.ESPColour
+pcall(
+	function()
+		game.Players.PlayerAdded:Connect(
+			function(plr)
+				for _, v in pairs(game.Players:GetPlayers()) do
+					if not v.Character:FindFirstChild("Highlight") then
+						highlight:Clone().Parent = v.Character
+						highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+						highlight.FillColor = _G.ESPColour
+					end
+				end
+				plr.CharacterAdded:Connect(
+					function(char)
+						if not char:FindFirstChild("Highlight") then
+							highlight:Clone().Parent = char
+							highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+							highlight.FillColor = _G.ESPColour
+						end
+					end
+				)
 			end
-		end
+		)
 	end
-	wait(0.3)
+)
+while true do
+	for _,v in pairs(game.Players:GetPlayers()) do
+        if v.Character:FindFirstChild("Highlight") then
+		    local CharHighlight = v.Character:FindFirstChild("Highlight")
+		    CharHighlight.Enabled = _G.ESPEnabled
+		    CharHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+		    CharHighlight.FillColor = _G.ESPColour
+        end
+
+        if not v.Character:FindFirstChild("Highlight") then
+		    highlight:Clone().Parent = v.Character
+		    highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+		    highlight.FillColor = _G.ESPColour
+        end
+	end
+	wait(0.1)
 end
