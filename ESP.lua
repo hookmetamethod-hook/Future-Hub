@@ -1,4 +1,4 @@
-_G.ESPEnabled = true
+_G.ESPEnabled = false
 _G.ESPColour = Color3.fromRGB(255, 255, 255)
 
 local highlight = Instance.new("Highlight")
