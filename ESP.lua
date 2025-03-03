@@ -30,7 +30,7 @@ pcall(
 				end
 				plr.CharacterAdded:Connect(
 					function(char)
-						if v.Character then
+						if char then
 							if not char:FindFirstChild("Highlight") then
 								highlight:Clone().Parent = char
 								highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
